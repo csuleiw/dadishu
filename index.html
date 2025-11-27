@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whack-a-Mole Mania</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Varela+Round&display=swap');
+      
+      body {
+        font-family: 'Varela Round', sans-serif;
+      }
+      
+      .game-font {
+        font-family: 'Fredoka One', cursive;
+      }
+
+      /* Cursor Smash Animation */
+      .cursor-smash {
+        animation: smash 0.15s ease-in-out forwards;
+      }
+
+      @keyframes smash {
+        0% { transform: rotate(-30deg); }
+        50% { transform: rotate(-80deg) translate(-10px, 10px); }
+        100% { transform: rotate(-30deg); }
+      }
+
+      @keyframes popUp {
+        0% { transform: translateY(100%); }
+        50% { transform: translateY(-10%); }
+        100% { transform: translateY(0); }
+      }
+
+      @keyframes hitShake {
+        0% { transform: rotate(0deg) scale(0.9); }
+        25% { transform: rotate(15deg) scale(0.9); }
+        50% { transform: rotate(-15deg) scale(0.9); }
+        75% { transform: rotate(5deg) scale(0.9); }
+        100% { transform: rotate(0deg) scale(0); opacity: 0; }
+      }
+      
+      @keyframes particleOut {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+      }
+
+      .mole-appear {
+        animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      .mole-hit {
+        animation: hitShake 0.4s ease-out forwards;
+      }
+      
+      .particle {
+        animation: particleOut 0.5s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-green-100 text-gray-900 select-none overflow-hidden">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
